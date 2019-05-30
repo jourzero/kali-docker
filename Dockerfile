@@ -1,11 +1,8 @@
 FROM kalilinux/kali-linux-docker
 
-RUN set -x \
-    && apt-get -yqq update \
-    && apt-get -yqq dist-upgrade \
-    && apt-get clean
+RUN apt-get -yqq update && apt-get -yqq dist-upgrade 
 
-# Add metapackages. Ref.: https://www.kali.org/news/kali-linux-metapackages/
+# Choose metapackages. Ref.: https://tools.kali.org/kali-metapackages
 RUN apt-get -y install kali-linux
 #RUN apt-get -y install kali-linux-all
 #RUN apt-get -y install kali-linux-forensic 
@@ -19,7 +16,7 @@ RUN apt-get -y install kali-linux
 RUN apt-get -y install kali-linux-web
 #RUN apt-get -y install kali-linux-wireless
 
-# Add individual tools as needed. Ref.: https://tools.kali.org/tools-listing
+# Hand-pick more tools. Ref.: https://tools.kali.org/tools-listing
 #RUN apt-get -y install arachni
 #RUN apt-get -y install lsof
 #RUN apt-get -y install metasploit-framework && service postgresql start && msfdb init
@@ -32,6 +29,9 @@ RUN apt-get -y install kali-linux-web
 #RUN apt-get -y install set
 #RUN apt-get -y install sqlmap
 #RUN apt-get -y install tshark
+
+# Clean-up by auto-removing unneeded software and by cleaning the install cache.
+RUN apt-get -yqq autoremove && apt-get clean
 
 # Expose needed ports
 EXPOSE 80/tcp
