@@ -1,0 +1,13 @@
+version: "2"
+services:
+  kali-docker:
+    build: .
+    container_name: kali-docker
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/bash
+    volumes:
+      - .:/root/kali-docker
+    ports:
+      - "4242:4242"
+
