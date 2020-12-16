@@ -1,16 +1,11 @@
 # README for kali-docker
 
-Simple Dockerfile for running Kali Linux inside of a Docker container.
+Simple Dockerfile for running a _smaller_ Kali Linux inside of a Docker container.
 
-Example build command that takes advantage of the Dockerfile which creates a local Kali image named "kali-docker" with Metasploit and Recon-NG:
-``` bash
-docker build -t ${PWD##*/} .
-```
+## Usage Information
 
-Example run command which creates a container named "kali-docker" and exposes port 4242 for any container to host publishing and file sharing:
-``` bash
-HOST_SHARE="/private/var/tmp/share"
-CTR_SHARE="/share"
-mkdir "$HOST_SHARE" 2>/dev/null
-docker run -it -p "127.0.0.1:4242:4242" --mount "type=bind,source=${HOST_SHARE},target=${CTR_SHARE}" --name ${PWD##*/} ${PWD##*/} 2>&1
-```
+- To add Kali meta-packages, visit the list [here](https://tools.kali.org/kali-metapackages) and then add entries to the [Dockerfile](./Dockerfile).
+- To add Kali tools, visit the list [here](https://tools.kali.org/tools-listing) and then add entries to the [Dockerfile](./Dockerfile).
+- To build the Kali image, run `docker-compose build`.
+- To create and run the Kali container, run `./kali-bash.sh` or `docker-compose run --name kali-docker kali-docker`.
+

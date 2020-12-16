@@ -328,3 +328,8 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# My additions
+.DS_Store
+OwaspTop10Sampler.txt.zip
+simple-http-fuzzer/

@@ -1,13 +1,15 @@
-version: "2"
-services:
-  app:
-    container_name: kali-docker
-    restart: always
+  kali-docker:
     build: .
-    volumes:
-      - /private/var/tmp/share:/share
-    ports:
-      - "4242:4242"
+    container_name: kali-docker
     stdin_open: true
     tty: true
+    entrypoint: /bin/bash
     command: /bin/bash
+    volumes:
+      - .:/root/kali-docker
+    ports:
+      - "127.0.0.1:55432:5432"
+      - "127.0.0.1:50080:80"
+      - "127.0.0.1:50443:443"
+      - "127.0.0.1:58080:8080"
+      - "127.0.0.1:59090:9090"
