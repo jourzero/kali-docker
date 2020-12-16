@@ -1,0 +1,13 @@
+version: "2"
+services:
+  app:
+    container_name: kali-docker
+    restart: always
+    build: .
+    volumes:
+      - /private/var/tmp/share:/share
+    ports:
+      - "4242:4242"
+    stdin_open: true
+    tty: true
+    command: /bin/bash
